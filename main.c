@@ -7,27 +7,47 @@
 #define MAX_NAME_LENGTH 64
 
 
-void promt_start(int *linesNb, char *player1, char *player2, bool *player1Begin ){
+void promt_start( char *player1, char *player2, bool *player1Begin ){
     printf("You are starting a new game of puissance4 \n");
-    do{
-        printf("How many numbers of lines do you wan to play ?\n");
-        scanf("%d", linesNb);
+    // do{
+    //     printf("How many numbers of lines do you wan to play ?\n");
+    //     scanf("%d", linesNb);
         
-    }
-    while(!isdigit(*linesNb));
-    printf("%s \n", isdigit(*linesNb) ? "true":"false");
-    printf("you have choose %i \n", *linesNb);
-    printf("this is ok");
+    // }
+    // while(isdigit(*linesNb));
 }
+
+char **initializeBoard( int cols, int rows){
+    char **matrix;
+    // for(int i=0; i<rows; i++){
+    //    matrix[i] = malloc(sizeof(char) * cols);
+    // }
+    matrix = malloc(sizeof(char*) * rows );
+    for(int j = 0; j < cols + 1 ; j++){
+        matrix[j] = malloc(sizeof(char)* (cols + 1));
+    } 
+ for(int j = 0; j < cols + 1 ; j++){
+    for(int i =0 ; i < rows ; i++){
+           if(j == cols+1) {
+                matrix[i][j] = '\0';
+           }else{
+                matrix[i][j] = ' ';
+           }
+       }
+ }
+    return matrix;
+}
+
 int main(int argc, char* argv[]){
     // 1. get les setting de parties ( nb colonnes, lignes) 
     // 2. savoir qui commence
-    int *LinesNb = malloc(sizeof(int));
+    //int *LinesNb = malloc(sizeof(int));
+    int LinesNb = 6;
     char *player1 = malloc(sizeof(char)*MAX_NAME_LENGTH);
     char *player2 = malloc(sizeof(char)*MAX_NAME_LENGTH);
     bool *player1Begin = malloc(sizeof(bool));
-    promt_start(LinesNb, player1, player2, player1Begin);
-    // 3. initailiser le board
+    promt_start( player1, player2, player1Begin);
+    // 3. initailiser le board x
     //* 
     // 4.TOUR 
     // jeu va serparer en tour
