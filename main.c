@@ -38,15 +38,34 @@ char **initializeBoard( int cols, int rows){
     return matrix;
 }
 
+void init(int *row, int *col, char *player1, char *player2) {
+    printf("You are starting a new game of puissance4 \n");
+    printf("How many rows and columns ?\n");
+    while (scanf("%d %d", row, col) < 2) {
+        getchar();
+        printf("Must be an integer value greater than 0\n");
+    }
+    printf("Playing with %d lines and %d columns\n", *row, *col);    
+}
+
+
 int main(int argc, char* argv[]){
     // 1. get les setting de parties ( nb colonnes, lignes) 
     // 2. savoir qui commence
     //int *LinesNb = malloc(sizeof(int));
-    int LinesNb = 6;
-    char *player1 = malloc(sizeof(char)*MAX_NAME_LENGTH);
-    char *player2 = malloc(sizeof(char)*MAX_NAME_LENGTH);
-    bool *player1Begin = malloc(sizeof(bool));
-    promt_start( player1, player2, player1Begin);
+    // int LinesNb = 6;
+    // char *player1 = malloc(sizeof(char)*MAX_NAME_LENGTH);
+    // char *player2 = malloc(sizeof(char)*MAX_NAME_LENGTH);
+    // bool *player1Begin = malloc(sizeof(bool));
+    // promt_start( player1, player2, player1Begin);
+
+
+    int row, col;
+    char player1[MAX_NAME_LENGTH], player2[MAX_NAME_LENGTH];
+
+    init(&row, &col, player1, player2);
+
+
     // 3. initailiser le board x
     //* 
     // 4.TOUR 
